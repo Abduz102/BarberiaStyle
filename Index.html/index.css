@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Encabezado y menu */
+.encabezado {
+    background-color: #000000;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #d4af37;
+}
+
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logotipo {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logotipo span {
+    color: #d4af37;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li {
+    margin-left: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #d4af37;
+}
+
+/* Sección Principal*/
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contenido-hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.boton-cita {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #d4af37;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: 0.4s;
+}
+
+.boton-cita:hover {
+    background-color: white;
+}
+
+/* Sección de Servicios */
+.seccion-servicios {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.titulo-seccion {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    border-bottom: 2px solid #d4af37;
+    display: inline-block;
+}
+
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    background-color: #262626;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    border: 1px solid #333;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+    border-color: #d4af37;
+}
+
+.tarjeta h3 {
+    color: #d4af37;
+    margin-bottom: 1rem;
+}
+
+.precio {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Pie de Página */
+.pie-pagina {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.iconos-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.iconos-container a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.iconos-container a:hover {
+    color: #ffaa00; /*cuando pasas el puntero cambia de color*/
+}
+
+.iconos-container img {
+    width: 30px;
+    height: auto;
+}
+
+
+/* Aca se modifica el estilo de la pagina de desarrolladores que esta en otra pagina
+pero se usa este mismo estilo de index*/
+
+.contenedor-desarrolladores {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 60vh; /* Para que el footer no suba mucho si hay poco contenido */
+}
+
+.titulo-seccion {
+    text-align: center;
+    color: #ffaa00;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.grid-cartas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.carta {
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo semi-transparente */
+    border: 1px solid #ffaa00;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.carta:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(255, 170, 0, 0.2);
+}
+
+.carta img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+}
+
+.carta-info {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.carta-info h3 {
+    margin-bottom: 10px;
+    color: #ffaa00;
+}
+
+.tags span {
+    background: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin: 2px;
+    display: inline-block;
+}
