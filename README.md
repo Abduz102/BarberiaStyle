@@ -2,6 +2,6 @@
 
 2-Valentina Bases de Datos
 
-3-Leannys terminara la pagina web 
+3-Leanis terminara la pagina web 
 
 Igual si necesitan ayuda solo hazmelo saber, no se queden callados
