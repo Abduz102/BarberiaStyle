@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbería Style</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ==================== VISTA PÚBLICA (DISEÑO DEL CLIENTE) ==================== -->
+    <div id="landing-view" class="snap-container">
+        <!-- Encabezado Superior Fijo -->
+        <header class="encabezado-superior">
+            <h1 class="logotipo">
+                <a href="#inicio" style="text-decoration:none;">Barberia</a><span>Style</span>
+            </h1>
+            <ul class="menu-superior">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#portafolio" class="nav-link">Galería</a></li>
+                <li><a href="#equipo" class="nav-link">Staff</a></li>
+                <li class="divisor-menu"></li>
+                <li><a href="#registro" class="nav-btn">Registro</a></li>
+                <li><a href="#ingresar" class="nav-btn accent">Login</a></li>
+            </ul>
+        </header>
+
+        <!-- Modal de Registro -->
+        <div id="registro" class="modal-overlay">
+            <div class="modal-registro">
+                <div class="modal-header-registro">
+                    <h2>Crear Cuenta</h2>
+                    <a href="#" class="cerrar-modal">&times;</a>
+                </div>
+                <form id="register-form" class="formulario-registro">
+                    <div class="grupo-input">
+                        <label for="reg-cedula">Cédula de Identidad:</label>
+                        <input type="text" id="reg-cedula" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="reg-nombre">Nombre Completo:</label>
+                        <input type="text" id="reg-nombre" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="reg-celular">Teléfono:</label>
+                        <input type="tel" id="reg-celular" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="reg-user">Usuario (Nickname):</label>
+                        <input type="text" id="reg-user" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="reg-pass">Contraseña:</label>
+                        <input type="password" id="reg-pass" required>
+                    </div>
+                    <div class="botones-registro">
+                        <button type="submit" class="btn-registrar">Registrarse</button>
+                        <a href="#" class="btn-cerrar">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de Ingresar -->
+        <div id="ingresar" class="modal-overlay">
+            <div class="modal-login">
+                <div class="modal-header-login">
+                    <h2>Iniciar Sesión</h2>
+                    <a href="#" class="cerrar-modal">&times;</a>
+                </div>
+                <form id="login-form" class="formulario-login">
+                    <div class="grupo-input">
+                        <label for="login-user">Usuario (Nickname):</label>
+                        <input type="text" id="login-user" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="login-pass">Contraseña:</label>
+                        <input type="password" id="login-pass" required>
+                    </div>
+                    <div class="botones-login">
+                        <button type="submit" class="btn-ingresar">Iniciar Sesión al Portal</button>
+                        <a href="#" class="btn-cerrar-login">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- titulo y boton de agendar cita -->
+        <section id="inicio" class="hero">
+            <div class="contenido-hero reveal">
+                <h1 class="hero-title">Barbería <span class="hero-accent">Style</span></h1>
+                <div style="height: 5vh;"></div>
+                <a href="#ingresar" class="boton-cita">Agendar Cita</a>
+            </div>
+        </section>
+
+        <!--Codigo cuando especificamos que servicios tenemos  -->
+        <section id="servicios" class="seccion-servicios">
+            <h2 class="titulo-seccion">Nuestros Servicios</h2>
+            <div class="contenedor-tarjetas">
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-scissors icono-servicio"></i>
+                        <h3>Corte Clásico</h3>
+                        <p>Un estilo que nunca pasa de moda, adaptado a tu rostro.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$30.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-pen-fancy icono-servicio"></i>
+                        <h3>Perfilado de Barba</h3>
+                        <p>Uso de navaja tradicional y aceites esenciales.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$15.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-crown icono-servicio"></i>
+                        <h3>Combo Imperial</h3>
+                        <p>Corte, barba y exfoliación facial completa.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$40.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-crop-simple icono-servicio"></i>
+                        <h3>Corte de Cabello con Tijeras</h3>
+                        <p>Corte preciso y personalizado con técnicas tradicionales de tijera para un resultado impecable.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$28.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-child icono-servicio"></i>
+                        <h3>Corte para Niños</h3>
+                        <p>Cortes seguros y divertidos diseñados especialmente para los más pequeños de la casa.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$18.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-bolt icono-servicio"></i>
+                        <h3>Corte de Cabello con Diseños</h3>
+                        <p>Cortes artísticos con diseños personalizados y creativos que reflejan tu estilo único.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$35.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-fill-drip icono-servicio"></i>
+                        <h3>Pigmentación y Perfilación de Barba</h3>
+                        <p>Pigmentación de barba y perfilado profesional para una barba de ensueño completamente renovada.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$30.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+                <div class="tarjeta reveal">
+                    <div class="contenido-tarjeta">
+                        <i class="fa-solid fa-spa icono-servicio"></i>
+                        <h3>Experiencia de Corte Completo</h3>
+                        <p>Renueva tu estilo con corte personalizado, perfilado y exfoliación facial.</p>
+                    </div>
+                    <div class="acciones-tarjeta">
+                        <span class="precio">$50.000 COP</span>
+                        <a href="#ingresar" class="boton-agendar">Ingresar al App</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portafolio de Trabajo -->
+        <section id="portafolio" class="seccion-portafolio">
+            <h2 class="titulo-seccion">Portafolio de Trabajo</h2>
+            <div class="galeria-portafolio">
+                <div class="item-galeria reveal">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=400" alt="Corte Clásico Fade">
+                    <div class="overlay-galeria"><span>Corte Clásico Fade</span></div>
+                </div>
+                <div class="item-galeria reveal">
+                    <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&q=80&w=400" alt="Arreglo de Barba">
+                    <div class="overlay-galeria"><span>Perfilado de Barba</span></div>
+                </div>
+                <div class="item-galeria reveal">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=400" alt="Corte Moderno Texturizado">
+                    <div class="overlay-galeria"><span>Texturizado Moderno</span></div>
+                </div>
+                <div class="item-galeria reveal">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=400" alt="Diseño Tribal Urbano">
+                    <div class="overlay-galeria"><span>Diseño Tribal Urbano</span></div>
+                </div>
+                <div class="item-galeria reveal">
+                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&q=80&w=400" alt="Colorimetría y Estilo">
+                    <div class="overlay-galeria"><span>Colorimetría y Estilo</span></div>
+                </div>
+                <div class="item-galeria reveal">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="Corte Ejecutivo Presidencial">
+                    <div class="overlay-galeria"><span>Corte Ejecutivo Presidencial</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Barberos -->
+        <section id="equipo" class="contenedor-equipo">
+            <h2 class="titulo-seccion">Nuestros Maestros Barberos</h2>
+            <div class="grid-cartas">
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" alt="Mike">
+                    <div class="carta-info">
+                        <h3>Mike</h3>
+                        <p>Fundador & Master Barber</p>
+                        <div class="tags">
+                            <span>Degradados VIP</span>
+                            <span>Estilo Clásico</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&q=80&w=400" alt="Alex">
+                    <div class="carta-info">
+                        <h3>Alex</h3>
+                        <p>Texturas y Larga Duración</p>
+                        <div class="tags"><span>Cortes Urbanos</span></div>
+                    </div>
+                </article>
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=400" alt="Jhon">
+                    <div class="carta-info">
+                        <h3>Jhon</h3>
+                        <p>Especialista en Barbas</p>
+                        <div class="tags"><span>Perfilado con Navaja</span></div>
+                    </div>
+                </article>
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" alt="David">
+                    <div class="carta-info">
+                        <h3>David</h3>
+                        <p>Diseño & Colorimetría</p>
+                        <div class="tags"><span>Tinte Platinado</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección de Colaboradores -->
+        <section id="colaboradores" class="contenedor-equipo" style="background-color:#0c0c0c;">
+            <h2 class="titulo-seccion">Colaboradores</h2>
+            <div class="grid-cartas">
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" alt="Jean">
+                    <div class="carta-info">
+                        <h3>Jean Maldonado</h3>
+                        <p>Desarrollador Frontend</p>
+                        <div class="tags">
+                            <span>Arch Linux</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400" alt="Jhon Ruiz">
+                    <div class="carta-info">
+                        <h3>Jhon Ruiz</h3>
+                        <p>Desarrollador Backend</p>
+                        <div class="tags"><span>JAVA</span></div>
+                    </div>
+                </article>
+                <article class="carta reveal">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400" alt="Valentina">
+                    <div class="carta-info">
+                        <h3>Valentina Caro</h3>
+                        <p>Analista</p>
+                        <div class="tags"><span>SQL/NoSQL</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contacto" class="pie-pagina">
+            <div class="footer-info">
+                <p>&copy; 2026 Barberia Style</p>
+                <p>Estamos ubicados CL 103b 50-82 Envigado</p>
+            </div>
+            
+            <div class="iconos-container">
+            <a href="#"><i class="fa-brands fa-instagram fa-2x"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-2x"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp fa-2x"></i></a>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ==================== VISTAS DEL SISTEMA PRIVADO POO ==================== -->
+    
+    <!-- Panel Cliente (Billetera + Historial) -->
+    <div id="dashboard-view" class="view-container" style="display:none;">
+        <nav class="dash-nav">
+            <div class="logo">
+                <i class="fa-solid fa-chess-king"></i>
+                <h2>Mi Billetera Barber</h2>
+            </div>
+            <div class="user-menu">
+                <span id="welcome-msg"></span>
+                <button id="btn-logout" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+            </div>
+        </nav>
+
+        <main class="dash-grid">
+            <section class="card">
+                <h3><i class="fa-solid fa-wallet"></i> Capital OOP Disponible</h3>
+                <div class="wallet-stats">
+                    <div class="stat-box">
+                        <div class="stat-title">Saldo Efectivo</div>
+                        <div class="stat-value" id="disp-saldo">$0.00</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Barber Points</div>
+                        <div class="stat-value" id="disp-puntos">0.00</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="btn-show-recharge"><i class="fa-solid fa-plus"></i> Recargar Billetera</button>
+                    <button class="btn-secondary" id="btn-show-transfer"><i class="fa-solid fa-exchange-alt"></i> Transferir</button>
+                </div>
+
+                <div id="recharge-section" class="grupo-input" style="display:none; margin-top:20px;">
+                    <label>Monto a recargar ($)</label>
+                    <input type="number" id="monto-recarga" step="0.01" min="1" class="crud-input">
+                    <button id="btn-recargar" class="btn-ingresar" style="margin-top:10px;">Inyectar Capital</button>
+                </div>
+
+                <div id="transfer-section" class="grupo-input" style="display:none; margin-top:20px;">
+                    <label>Usuario Destino (Nickname)</label>
+                    <input type="text" id="destino-transfer" placeholder="ej. luis" class="crud-input">
+                    <label style="margin-top:10px;">Puntos a Transferir</label>
+                    <input type="number" id="monto-transfer" step="0.01" min="1" class="crud-input">
+                    <button id="btn-transferir" class="btn-ingresar" style="margin-top:10px;">Enviar Puntos</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3><i class="fa-solid fa-calendar-check"></i> Agendar Instrucción de Cita</h3>
+                <form id="agendar-form">
+                    <div class="grupo-input" style="margin-bottom:15px;">
+                        <label>Tipo de Servicio Polimórfico</label>
+                        <select id="select-servicio" required class="crud-input">
+                            <option value="estandar">Corte Estándar ($30.000 COP - Aplica Crédito)</option>
+                            <option value="ahorro">Corte Plan Ahorro ($25.000 COP - Aplica +1.5% Rendimiento)</option>
+                            <option value="vip">Suscripción VIP Ultra ($120.000 COP Anual - Aplica Interés)</option>
+                        </select>
+                    </div>
+
+                    <div id="vip-options" class="grupo-input" style="display:none; margin-bottom:15px;">
+                        <label>Financiamiento (Cuotas)</label>
+                        <select id="select-cuotas" class="crud-input">
+                            <option value="1">1 Cuota (0% Interés)</option>
+                            <option value="3">3 Cuotas (1.9% Interés p/c)</option>
+                            <option value="6">6 Cuotas (1.9% Interés p/c)</option>
+                            <option value="12">12 Cuotas (2.3% Interés p/c)</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-input" style="margin-bottom:15px;">
+                        <label>Elegir Barbero Instanciado</label>
+                        <select id="select-barbero" required class="crud-input">
+                            <option value="">Cargando catálogo...</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-ingresar" style="width:100%; border-radius:4px; padding:10px;">Procesar Orden de Compra</button>
+                </form>
+            </section>
+
+            <section class="card" style="grid-column: 1 / -1; margin-top:20px;">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Bitácora de Movimientos</h3>
+                <div class="table-responsive">
+                    <table id="historial-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha Sistema</th>
+                                <th>Servicio Aplicado</th>
+                                <th>Barbero Asignado</th>
+                                <th>Cargo en BD</th>
+                                <th>Fuente del Fondo</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Panel Admin -->
+    <div id="admin-view" class="admin-layout" style="display:none;">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <i class="fa-solid fa-server"></i>
+                <h2>SYS ADMIN</h2>
+            </div>
+            
+            <div class="admin-user-info">
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Root / Superusuario</span>
+            </div>
+
+            <ul class="admin-menu">
+                <li class="active"><a href="#"><i class="fa-solid fa-database"></i> Instancias CRUD</a></li>
+                <li><a href="#"><i class="fa-solid fa-chart-line"></i> Métricas</a></li>
+                <li><a href="#"><i class="fa-solid fa-terminal"></i> Terminal Logs</a></li>
+            </ul>
+
+            <div class="admin-bottom">
+                <button id="btn-logout-admin" class="btn-admin-danger"><i class="fa-solid fa-power-off"></i> Reboot Sec</button>
+            </div>
+        </aside>
+        
+        <main class="admin-workspace">
+            <header class="admin-header">
+                <h3>Centro de Comando DB</h3>
+                <div class="server-status">
+                    <span class="status-dot"></span> Online - Port 3000
+                </div>
+            </header>
+
+            <section class="admin-panel">
+                <div class="flex-between" style="display:flex; justify-content:space-between; margin-bottom:25px; align-items:center;">
+                    <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-microchip"></i> Gestión de Clases</h3>
+                    <div style="display:flex; gap:10px;">
+                        <button id="btn-admin-simular" class="btn-admin-outline"><i class="fa-solid fa-forward-step"></i> Simular Mes</button>
+                        <button id="btn-admin-add" class="btn-admin-primary"><i class="fa-solid fa-plus"></i> Inyectar Registro</button>
+                    </div>
+                </div>
+
+                <div id="admin-crud-form" class="admin-form-container" style="display:none;">
+                    <h4 id="crud-title">Operación CRUD</h4>
+                    <form id="form-crud-user" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <input type="hidden" id="crud-original-user">
+                        
+                        <div class="admin-input-group">
+                            <label>Cédula ID</label>
+                            <input type="text" id="crud-cedula" required class="admin-input">
+                        </div>
+                        <div class="admin-input-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" id="crud-nombre" required class="admin-input">
+                        </div>
+                        <div class="admin-input-group">
+                            <label>N° Celular</label>
+                            <input type="text" id="crud-celular" required class="admin-input">
+                        </div>
+                        <div class="admin-input-group">
+                            <label>Rol / Instancia de Clase</label>
+                            <select id="crud-rol" required class="admin-input">
+                                <option value="Cliente">Cliente</option>
+                                <option value="Barbero">Barbero</option>
+                                <option value="Admin">Administrador</option>
+                            </select>
+                        </div>
+                        <div class="admin-input-group">
+                            <label>Username</label>
+                            <input type="text" id="crud-user" required class="admin-input">
+                        </div>
+                        <div class="admin-input-group">
+                            <label>Contraseña</label>
+                            <input type="password" id="crud-pass" class="admin-input" placeholder="(Opcional si edita)">
+                        </div>
+                        
+                        <div style="grid-column: 1 / -1; display:flex; gap:15px; margin-top:15px;">
+                            <button type="submit" class="btn-admin-primary">Ejecutar Comando</button>
+                            <button type="button" id="btn-crud-cancel" class="btn-admin-danger">Abortar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-table-container">
+                    <table id="usuarios-table" class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>C.I</th>
+                                <th>Nombre</th>
+                                <th>Instancia</th>
+                                <th>Estado</th>
+                                <th>Terminal</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Panel Barbero -->
+    <div id="barber-view" class="view-container" style="display:none;">
+        <nav class="dash-nav">
+            <div class="logo">
+                <i class="fa-solid fa-hand-sparkles"></i>
+                <h2>Portal Staff - Barbero</h2>
+            </div>
+            <div class="user-menu">
+                <span id="welcome-msg-barbero" style="color:var(--text-main);">Staff</span>
+                <button id="btn-logout-barber" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+            </div>
+        </nav>
+        <main class="dash-grid">
+            <section class="card" style="grid-column: 1 / -1;">
+                <h3><i class="fa-solid fa-clipboard-list"></i> Cronograma de Citas Asignadas</h3>
+                <div class="table-responsive">
+                    <table id="citas-barbero-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha y Hora</th>
+                                <th>Cliente</th>
+                                <th>Servicio Requerido</th>
+                                <th>Cobro</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Contenedor único para TOASTs (No tocar) -->
+    <div id="app-toast"></div>
+
+    <script type="module" src="app.js?v=2024.4"></script>
+</body>
+</html>

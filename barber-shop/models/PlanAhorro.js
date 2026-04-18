@@ -1,0 +1,2 @@
+import { ServicioBase } from './ServicioBase.js';
+export class PlanAhorro extends ServicioBase { constructor(c) { super("Corte Ahorro", c); this.t = 0.015; } procesarPago(c) { const p = this.calcularPrecio(c); if (c.puntos >= p) { c.descontarPuntos(p); return { success: true, method: "Puntos" }; } if (c.saldo >= p) { c.descontarSaldo(p); c.agregarPuntos(p * this.t); return { success: true, method: `Saldo (+${(p * this.t).toFixed(2)} pts)` }; } return { success: false, msg: "Insuficiente." }; } }

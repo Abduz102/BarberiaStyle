@@ -1,0 +1,2 @@
+import { ServicioBase } from './ServicioBase.js';
+export class CorteEstandar extends ServicioBase { constructor() { super("Corte Estándar", 30000); this.m = 0.2; } procesarPago(c) { const p = this.calcularPrecio(c); const cap = c.saldo + (c.esRecurrente ? p * this.m : 0); if (cap >= p) { c.descontarSaldo(p); return { success: true, method: "Saldo/Crédito" }; } return { success: false, msg: "Saldo insuficiente." }; } }
