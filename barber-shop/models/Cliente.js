@@ -11,4 +11,12 @@ export class Cliente extends Usuario {
     transferirPuntos(d, c) { if (c > 0 && this.#puntos >= c) { this.descontarPuntos(c); d.agregarPuntos(c); return true; } return false; }
     agendarCita(c) { this.historialCitas.push(c); if (this.historialCitas.length >= 3) this.esRecurrente = true; }
     _restaurarBilletera(s, p) { if (s) this.#saldo = s; if (p) this.#puntos = p; }
+    // Este método es detectado automáticamente por JSON.stringify()
+    toJSON() {
+        return {
+            ...this,              // Copia todas las variables públicas (cedula, usuario, etc.)
+            saldo: this.saldo,    // Fuerza a guardar el saldo usando tu 'get saldo()'
+            puntos: this.puntos   // Fuerza a guardar los puntos usando tu 'get puntos()'
+        };
+    }
 }
