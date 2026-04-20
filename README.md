@@ -1,6 +1,6 @@
 <h3>Proyecto integrador</h3>
 
-Para teenrlo en su ordenador nomas tienen que:
+Para tenerlo en su ordenador nomas tienen que:
 
 2-Abrir la terminal desde la ubicacion donde quieres guardar el repo
 3-colocar el comando, git clone URL del repositorio
