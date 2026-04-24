@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <!--  VISTA PÚBLICA (DISEÑO DEL CLIENTE -->
+    <!-- ==================== VISTA PÚBLICA (DISEÑO DEL CLIENTE) ==================== -->
     <div id="landing-view" class="snap-container">
         <!-- Encabezado Superior Fijo -->
         <header class="encabezado-superior">
@@ -36,24 +38,28 @@
                 </div>
                 <form id="register-form" class="formulario-registro">
                     <div class="grupo-input">
-                        <label for="reg-cedula">Cédula de Identidad:</label>
-                        <input type="text" id="reg-cedula" required>
-                    </div>
-                    <div class="grupo-input">
                         <label for="reg-nombre">Nombre Completo:</label>
                         <input type="text" id="reg-nombre" required>
                     </div>
-                    <div class="grupo-input">
-                        <label for="reg-celular">Teléfono:</label>
-                        <input type="tel" id="reg-celular" required>
+                    <div class="grupo-input-2columnas">
+                        <div class="grupo-input">
+                            <label for="reg-cedula">Cédula de Identidad:</label>
+                            <input type="text" id="reg-cedula" required>
+                        </div>
+                        <div class="grupo-input">
+                            <label for="reg-celular">Teléfono:</label>
+                            <input type="tel" id="reg-celular" required>
+                        </div>
                     </div>
-                    <div class="grupo-input">
-                        <label for="reg-user">Usuario (Nickname):</label>
-                        <input type="text" id="reg-user" required>
-                    </div>
-                    <div class="grupo-input">
-                        <label for="reg-pass">Contraseña:</label>
-                        <input type="password" id="reg-pass" required>
+                    <div class="grupo-input-2columnas">
+                        <div class="grupo-input">
+                            <label for="reg-user">Usuario (Nickname):</label>
+                            <input type="text" id="reg-user" required>
+                        </div>
+                        <div class="grupo-input">
+                            <label for="reg-pass">Contraseña:</label>
+                            <input type="password" id="reg-pass" required>
+                        </div>
                     </div>
                     <div class="botones-registro">
                         <button type="submit" class="btn-registrar">Registrarse</button>
@@ -137,7 +143,8 @@
                     <div class="contenido-tarjeta">
                         <i class="fa-solid fa-crop-simple icono-servicio"></i>
                         <h3>Corte de Cabello con Tijeras</h3>
-                        <p>Corte preciso y personalizado con técnicas tradicionales de tijera para un resultado impecable.</p>
+                        <p>Corte preciso y personalizado con técnicas tradicionales de tijera para un resultado
+                            impecable.</p>
                     </div>
                     <div class="acciones-tarjeta">
                         <span class="precio">$28.000 COP</span>
@@ -170,7 +177,8 @@
                     <div class="contenido-tarjeta">
                         <i class="fa-solid fa-fill-drip icono-servicio"></i>
                         <h3>Pigmentación y Perfilación de Barba</h3>
-                        <p>Pigmentación de barba y perfilado profesional para una barba de ensueño completamente renovada.</p>
+                        <p>Pigmentación de barba y perfilado profesional para una barba de ensueño completamente
+                            renovada.</p>
                     </div>
                     <div class="acciones-tarjeta">
                         <span class="precio">$30.000 COP</span>
@@ -196,27 +204,33 @@
             <h2 class="titulo-seccion">Portafolio de Trabajo</h2>
             <div class="galeria-portafolio">
                 <div class="item-galeria reveal">
-                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=400" alt="Corte Clásico Fade">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=400"
+                        alt="Corte Clásico Fade">
                     <div class="overlay-galeria"><span>Corte Clásico Fade</span></div>
                 </div>
                 <div class="item-galeria reveal">
-                    <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&q=80&w=400" alt="Arreglo de Barba">
+                    <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?auto=format&fit=crop&q=80&w=400"
+                        alt="Arreglo de Barba">
                     <div class="overlay-galeria"><span>Perfilado de Barba</span></div>
                 </div>
                 <div class="item-galeria reveal">
-                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=400" alt="Corte Moderno Texturizado">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=400"
+                        alt="Corte Moderno Texturizado">
                     <div class="overlay-galeria"><span>Texturizado Moderno</span></div>
                 </div>
                 <div class="item-galeria reveal">
-                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=400" alt="Diseño Tribal Urbano">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&q=80&w=400"
+                        alt="Diseño Tribal Urbano">
                     <div class="overlay-galeria"><span>Diseño Tribal Urbano</span></div>
                 </div>
                 <div class="item-galeria reveal">
-                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&q=80&w=400" alt="Colorimetría y Estilo">
+                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&q=80&w=400"
+                        alt="Colorimetría y Estilo">
                     <div class="overlay-galeria"><span>Colorimetría y Estilo</span></div>
                 </div>
                 <div class="item-galeria reveal">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="Corte Ejecutivo Presidencial">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400"
+                        alt="Corte Ejecutivo Presidencial">
                     <div class="overlay-galeria"><span>Corte Ejecutivo Presidencial</span></div>
                 </div>
             </div>
@@ -227,7 +241,8 @@
             <h2 class="titulo-seccion">Nuestros Maestros Barberos</h2>
             <div class="grid-cartas">
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400" alt="Mike">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
+                        alt="Mike">
                     <div class="carta-info">
                         <h3>Mike</h3>
                         <p>Fundador & Master Barber</p>
@@ -238,7 +253,8 @@
                     </div>
                 </article>
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&q=80&w=400" alt="Alex">
+                    <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&q=80&w=400"
+                        alt="Alex">
                     <div class="carta-info">
                         <h3>Alex</h3>
                         <p>Texturas y Larga Duración</p>
@@ -246,7 +262,8 @@
                     </div>
                 </article>
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=400" alt="Jhon">
+                    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=400"
+                        alt="Jhon">
                     <div class="carta-info">
                         <h3>Jhon</h3>
                         <p>Especialista en Barbas</p>
@@ -254,7 +271,8 @@
                     </div>
                 </article>
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" alt="David">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400"
+                        alt="David">
                     <div class="carta-info">
                         <h3>David</h3>
                         <p>Diseño & Colorimetría</p>
@@ -269,7 +287,8 @@
             <h2 class="titulo-seccion">Colaboradores</h2>
             <div class="grid-cartas">
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" alt="Jean">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400"
+                        alt="Jean">
                     <div class="carta-info">
                         <h3>Jean Maldonado</h3>
                         <p>Desarrollador Frontend</p>
@@ -280,7 +299,8 @@
                     </div>
                 </article>
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400" alt="Jhon Ruiz">
+                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400"
+                        alt="Jhon Ruiz">
                     <div class="carta-info">
                         <h3>Jhon Ruiz</h3>
                         <p>Desarrollador Backend</p>
@@ -288,7 +308,8 @@
                     </div>
                 </article>
                 <article class="carta reveal">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400" alt="Valentina">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400"
+                        alt="Valentina">
                     <div class="carta-info">
                         <h3>Valentina Caro</h3>
                         <p>Analista</p>
@@ -304,18 +325,18 @@
                 <p>&copy; 2026 Barberia Style</p>
                 <p>Estamos ubicados CL 103b 50-82 Envigado</p>
             </div>
-            
+
             <div class="iconos-container">
-            <a href="#"><i class="fa-brands fa-instagram fa-2x"></i></a>
-            <a href="#"><i class="fa-brands fa-facebook fa-2x"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp fa-2x"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp fa-2x"></i></a>
             </div>
         </footer>
     </div>
 
 
-    <!--  VISTAS DEL SISTEMA PRIVADO POO  -->
-    
+    <!-- ==================== VISTAS DEL SISTEMA PRIVADO POO ==================== -->
+
     <!-- Panel Cliente (Billetera + Historial) -->
     <div id="dashboard-view" class="view-container" style="display:none;">
         <nav class="dash-nav">
@@ -325,7 +346,8 @@
             </div>
             <div class="user-menu">
                 <span id="welcome-msg"></span>
-                <button id="btn-logout" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+                <button id="btn-logout" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cerrar
+                    Sesión</button>
             </div>
         </nav>
 
@@ -343,15 +365,28 @@
                     </div>
                 </div>
 
-                <div class="action-buttons">
-                    <button class="btn-secondary" id="btn-show-recharge"><i class="fa-solid fa-plus"></i> Recargar Billetera</button>
-                    <button class="btn-secondary" id="btn-show-transfer"><i class="fa-solid fa-exchange-alt"></i> Transferir</button>
+                <div class="action-buttons" style="flex-wrap: wrap;">
+                    <button class="btn-secondary" id="btn-show-recharge"><i class="fa-solid fa-plus"></i>
+                        Recargar</button>
+                    <button class="btn-secondary" id="btn-show-withdraw"><i class="fa-solid fa-minus"></i>
+                        Retirar</button>
+                    <button class="btn-secondary" id="btn-show-transfer"><i class="fa-solid fa-exchange-alt"></i>
+                        Transferir</button>
+                    <button class="btn-secondary" id="btn-simular-mes"><i class="fa-solid fa-calendar-plus"></i> Simular
+                        Mes</button>
                 </div>
 
                 <div id="recharge-section" class="grupo-input" style="display:none; margin-top:20px;">
                     <label>Monto a recargar ($)</label>
                     <input type="number" id="monto-recarga" step="0.01" min="1" class="crud-input">
                     <button id="btn-recargar" class="btn-ingresar" style="margin-top:10px;">Inyectar Capital</button>
+                </div>
+
+                <div id="withdraw-section" class="grupo-input"
+                    style="display:none; margin-top:20px; flex-direction:column;">
+                    <label>Monto a retirar ($)</label>
+                    <input type="number" id="monto-retiro" step="0.01" min="1" class="crud-input">
+                    <button id="btn-retirar" class="btn-ingresar" style="margin-top:10px;">Retirar Fondos</button>
                 </div>
 
                 <div id="transfer-section" class="grupo-input" style="display:none; margin-top:20px;">
@@ -392,12 +427,13 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn-ingresar" style="width:100%; border-radius:4px; padding:10px;">Procesar Orden de Compra</button>
+                    <button type="submit" class="btn-ingresar"
+                        style="width:100%; border-radius:4px; padding:10px;">Procesar Orden de Compra</button>
                 </form>
             </section>
 
             <section class="card" style="grid-column: 1 / -1; margin-top:20px;">
-                <h3><i class="fa-solid fa-clock-rotate-left"></i> Bitácora de Movimientos</h3>
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Bitácora de Citas</h3>
                 <div class="table-responsive">
                     <table id="historial-table">
                         <thead>
@@ -407,6 +443,23 @@
                                 <th>Barbero Asignado</th>
                                 <th>Cargo en BD</th>
                                 <th>Fuente del Fondo</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card" style="grid-column: 1 / -1; margin-top:20px;">
+                <h3><i class="fa-solid fa-building-columns"></i> Bitácora de Movimientos Bancarios</h3>
+                <div class="table-responsive">
+                    <table id="historial-bancario-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha Transacción</th>
+                                <th>Tipo de Operación</th>
+                                <th>Monto Operado</th>
+                                <th>Detalle Descriptivo</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -423,23 +476,25 @@
                 <i class="fa-solid fa-server"></i>
                 <h2>SYS ADMIN</h2>
             </div>
-            
+
             <div class="admin-user-info">
                 <i class="fa-solid fa-user-shield"></i>
                 <span>Root / Superusuario</span>
             </div>
 
             <ul class="admin-menu">
-                <li class="active"><a href="#"><i class="fa-solid fa-database"></i> Instancias CRUD</a></li>
-                <li><a href="#"><i class="fa-solid fa-chart-line"></i> Métricas</a></li>
-                <li><a href="#"><i class="fa-solid fa-terminal"></i> Terminal Logs</a></li>
+                <li class="active"><a id="menu-admin-usuarios" href="#"><i class="fa-solid fa-database"></i>Usuarios</a>
+                </li>
+                <li><a id="menu-admin-citas" href="#"><i class="fa-solid fa-chart-line"></i>Citas</a></li>
+                <li><a id="menu-admin-transacciones" href="#"><i class="fa-solid fa-terminal"></i>Transacciones</a></li>
             </ul>
 
             <div class="admin-bottom">
-                <button id="btn-logout-admin" class="btn-admin-danger"><i class="fa-solid fa-power-off"></i> Reboot Sec</button>
+                <button id="btn-logout-admin" class="btn-admin-danger"><i class="fa-solid fa-power-off"></i> Cerrar
+                    Sesión</button>
             </div>
         </aside>
-        
+
         <main class="admin-workspace">
             <header class="admin-header">
                 <h3>Centro de Comando DB</h3>
@@ -448,20 +503,24 @@
                 </div>
             </header>
 
-            <section class="admin-panel">
-                <div class="flex-between" style="display:flex; justify-content:space-between; margin-bottom:25px; align-items:center;">
-                    <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-microchip"></i> Gestión de Clases</h3>
+            <section id="admin-crud-section" class="admin-panel">
+                <div class="flex-between"
+                    style="display:flex; justify-content:space-between; margin-bottom:25px; align-items:center;">
+                    <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-microchip"></i> Gestión
+                        de Clases</h3>
                     <div style="display:flex; gap:10px;">
-                        <button id="btn-admin-simular" class="btn-admin-outline"><i class="fa-solid fa-forward-step"></i> Simular Mes</button>
-                        <button id="btn-admin-add" class="btn-admin-primary"><i class="fa-solid fa-plus"></i> Inyectar Registro</button>
+                        <button id="btn-admin-simular" class="btn-admin-outline"><i
+                                class="fa-solid fa-forward-step"></i> Simular Mes</button>
+                        <button id="btn-admin-add" class="btn-admin-primary"><i class="fa-solid fa-plus"></i> Inyectar
+                            Registro</button>
                     </div>
                 </div>
 
                 <div id="admin-crud-form" class="admin-form-container" style="display:none;">
-                    <h4 id="crud-title">Operación CRUD</h4>
+                    <h4 id="crud-title">Actualizar Datos del Usuario</h4>
                     <form id="form-crud-user" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
                         <input type="hidden" id="crud-original-user">
-                        
+
                         <div class="admin-input-group">
                             <label>Cédula ID</label>
                             <input type="text" id="crud-cedula" required class="admin-input">
@@ -490,7 +549,7 @@
                             <label>Contraseña</label>
                             <input type="password" id="crud-pass" class="admin-input" placeholder="(Opcional si edita)">
                         </div>
-                        
+
                         <div style="grid-column: 1 / -1; display:flex; gap:15px; margin-top:15px;">
                             <button type="submit" class="btn-admin-primary">Ejecutar Comando</button>
                             <button type="button" id="btn-crud-cancel" class="btn-admin-danger">Abortar</button>
@@ -513,6 +572,56 @@
                     </table>
                 </div>
             </section>
+
+            <section id="admin-citas-section" class="admin-panel" style="display:none;">
+                <div class="flex-between"
+                    style="display:flex; justify-content:space-between; margin-bottom:25px; align-items:center;">
+                    <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-chart-line"></i> Control
+                        de Servicios y Pagos</h3>
+                </div>
+
+                <div class="admin-table-container">
+                    <table id="admin-citas-table" class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha Sistema</th>
+                                <th>Cliente</th>
+                                <th>Servicio</th>
+                                <th>Barbero Asignado</th>
+                                <th>Precio Cobrado</th>
+                                <th>Método de Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="admin-transacciones-section" class="admin-panel" style="display:none;">
+                <div class="flex-between"
+                    style="display:flex; justify-content:space-between; margin-bottom:25px; align-items:center;">
+                    <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-building-columns"></i>
+                        Bóveda Principal</h3>
+                    <div
+                        style="background:var(--bg-card); border:1px solid var(--border); padding:10px 20px; border-radius:6px; color:var(--neon); font-size:1.5rem; font-weight:700;">
+                        Saldo Total: <span id="admin-disp-saldo">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="admin-table-container">
+                    <table id="admin-transacciones-table" class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha Sistema</th>
+                                <th>Tipo de Operación</th>
+                                <th>Monto</th>
+                                <th>Detalle / Origen</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -525,7 +634,8 @@
             </div>
             <div class="user-menu">
                 <span id="welcome-msg-barbero" style="color:var(--text-main);">Staff</span>
-                <button id="btn-logout-barber" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+                <button id="btn-logout-barber" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i>
+                    Cerrar Sesión</button>
             </div>
         </nav>
         <main class="dash-grid">
@@ -553,4 +663,5 @@
 
     <script type="module" src="app.js?v=2024.4"></script>
 </body>
+
 </html>

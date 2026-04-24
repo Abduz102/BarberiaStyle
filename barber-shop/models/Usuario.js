@@ -13,5 +13,5 @@ export class Usuario {
         if (this.#intentosFallidos >= 3) { this.bloqueado = true; return { success: false, msg: "Bloqueado por seguridad." }; }
         return { success: false, msg: `Incorrecto. Intentos: ${this.#intentosFallidos}/3` };
     }
-    toJSON() { return { rol: this.rol, cedula: this.cedula, nombreCompleto: this.nombreCompleto, celular: this.celular, usuario: this.usuario, contrasena: this.#contrasena, intentosFallidos: this.#intentosFallidos, bloqueado: this.bloqueado, saldo: this.saldo, puntos: this.puntos, historialCitas: this.historialCitas, esRecurrente: this.esRecurrente, especialidad: this.especialidad }; }
+    toJSON() { return { rol: this.rol, cedula: this.cedula, nombreCompleto: this.nombreCompleto, celular: this.celular, usuario: this.usuario, contrasena: this.#contrasena, intentosFallidos: this.#intentosFallidos, bloqueado: this.bloqueado, saldo: this.saldo, puntos: this.puntos, historialCitas: this.historialCitas, historialBancario: this.historialBancario, esRecurrente: this.esRecurrente, especialidad: this.especialidad }; }
 }

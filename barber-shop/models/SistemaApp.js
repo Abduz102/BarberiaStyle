@@ -10,9 +10,9 @@ export class SistemaApp {
         if (data) {
             this.usuarios = JSON.parse(data).map(o => {
                 let inst;
-                if (o.rol === "Admin") inst = new Administrador(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena);
+                if (o.rol === "Admin") { inst = new Administrador(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena); inst._restaurarBilletera(o.saldo); inst.historialBancario = o.historialBancario || []; }
                 else if (o.rol === "Barbero") inst = new Barbero(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena, o.especialidad);
-                else { inst = new Cliente(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena); inst._restaurarBilletera(o.saldo, o.puntos); inst.historialCitas = o.historialCitas || []; inst.esRecurrente = o.esRecurrente || false; }
+                else { inst = new Cliente(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena); inst._restaurarBilletera(o.saldo, o.puntos); inst.historialCitas = o.historialCitas || []; inst.historialBancario = o.historialBancario || []; inst.esRecurrente = o.esRecurrente || false; }
                 inst.bloqueado = o.bloqueado || false; inst._setIntentosFallidos(o.intentosFallidos || 0); return inst;
             });
         } else this.initDatosFalsos();

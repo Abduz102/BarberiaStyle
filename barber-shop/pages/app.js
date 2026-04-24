@@ -86,13 +86,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const tb = document.querySelector("#historial-table tbody"); tb.innerHTML = "";
         app.currentUser.historialCitas.forEach(c => { tb.innerHTML += `<tr><td>${c.fecha}</td><td><strong style="color:var(--chrome)">${c.servicio}</strong></td><td>${c.barbero}</td><td><span style="color:var(--gold); font-weight:600;">$${c.montoPagado.toFixed(2)}</span></td><td><span style="font-size:0.85rem; border:1px solid var(--border); padding:4px 8px; border-radius:6px; background:rgba(255,255,255,0.05);">${c.metodoPago}</span></td></tr>`; });
+
+        const tbBancario = document.querySelector("#historial-bancario-table tbody");
+        if (tbBancario) {
+            tbBancario.innerHTML = "";
+            (app.currentUser.historialBancario || []).forEach(m => {
+                let colorMonto = ["Retiro", "Pago", "Transferencia"].includes(m.tipo) ? "var(--error)" : "var(--success)";
+                tbBancario.innerHTML += `<tr><td>${m.fecha}</td><td><strong>${m.tipo}</strong></td><td><span style="color:${colorMonto}; font-weight:600;">$${m.monto.toFixed(2)}</span></td><td>${m.detalle}</td></tr>`;
+            });
+        }
     }
 
-    document.getElementById("btn-show-recharge").addEventListener("click", () => { document.getElementById("recharge-section").style.display = "flex"; document.getElementById("transfer-section").style.display = "none"; });
-    document.getElementById("btn-show-transfer").addEventListener("click", () => { document.getElementById("transfer-section").style.display = "flex"; document.getElementById("recharge-section").style.display = "none"; });
+    document.getElementById("btn-show-recharge").addEventListener("click", () => { document.getElementById("recharge-section").style.display = "flex"; document.getElementById("transfer-section").style.display = "none"; document.getElementById("withdraw-section").style.display = "none"; });
+    document.getElementById("btn-show-transfer").addEventListener("click", () => { document.getElementById("transfer-section").style.display = "flex"; document.getElementById("recharge-section").style.display = "none"; document.getElementById("withdraw-section").style.display = "none"; });
+    document.getElementById("btn-show-withdraw").addEventListener("click", () => { document.getElementById("withdraw-section").style.display = "flex"; document.getElementById("recharge-section").style.display = "none"; document.getElementById("transfer-section").style.display = "none"; });
 
     document.getElementById("btn-recargar").addEventListener("click", () => { if (app.currentUser.recargarSaldo(parseFloat(document.getElementById("monto-recarga").value))) { app.guardar(); actD(); showToast("Saldo recargado correctamente"); document.getElementById("monto-recarga").value = ""; } else showToast("Monto inválido", true); });
     document.getElementById("btn-transferir").addEventListener("click", () => { const d = app.usuarios.find(x => x.usuario === document.getElementById("destino-transfer").value && x.rol === "Cliente"); if (!d) return showToast("Destino no válido", true); if (app.currentUser.transferirPuntos(d, parseFloat(document.getElementById("monto-transfer").value))) { app.guardar(); actD(); showToast("Se han transferido los puntos"); document.getElementById("destino-transfer").value = ""; document.getElementById("monto-transfer").value = ""; } else showToast("Asegúrate de tener puntos suficientes", true); });
+
+    document.getElementById("btn-retirar").addEventListener("click", () => {
+        const monto = parseFloat(document.getElementById("monto-retiro").value);
+        if (app.currentUser.retirarSaldo(monto)) {
+            const admin = app.usuarios.find(x => x.rol === "Admin");
+            if (admin) admin.agregarFondo(monto);
+            app.guardar(); actD(); showToast("Fondos retirados y transferidos al administrador"); document.getElementById("monto-retiro").value = "";
+        } else showToast("Monto inválido o saldo insuficiente", true);
+    });
+
+    document.getElementById("btn-simular-mes").addEventListener("click", () => {
+        if (app.currentUser.simularInteres()) {
+            app.guardar(); actD(); showToast("Mes simulado: 1.5% de interés aplicado");
+        } else showToast("Necesitas saldo mayor a cero para generar interés", true);
+    });
 
     document.getElementById("select-servicio").addEventListener("change", (e) => document.getElementById("vip-options").style.display = e.target.value === "vip" ? "block" : "none");
     document.getElementById("agendar-form").addEventListener("submit", (e) => {
@@ -135,6 +160,80 @@ document.addEventListener("DOMContentLoaded", () => {
             if (x.usuario !== "admin") bts += `<button onclick="eliminarUsuarioAction('${x.usuario}')" class="btn-secondary btn-sm" style="color:var(--error); border-color:rgba(255,255,255,0.1);" title="Eliminar"><i class="fa-solid fa-trash"></i></button>`;
             if (x.bloqueado) bts += `<button onclick="desbloquearUsuarioAction('${x.usuario}')" class="btn-secondary btn-sm" style="color:var(--success); border-color:var(--success);" title="Desbloquear"><i class="fa-solid fa-unlock"></i></button>`;
             tb.innerHTML += `<tr><td>${x.cedula}</td><td><strong>${x.nombreCompleto}</strong></td><td>${x.rol}</td><td>${x.bloqueado ? 'Bloqueado' : 'Activo'}</td><td><div style="display:flex; gap:5px;">${bts}</div></td></tr>`;
+        });
+    }
+
+    function renderAdminTransacciones() {
+        const admin = app.currentUser; // Siendo admin, el currentUser es el administrador
+        if (!admin || admin.rol !== "Admin") return;
+        document.getElementById("admin-disp-saldo").innerText = `$${admin.saldo.toFixed(2)}`;
+        
+        const tb = document.querySelector("#admin-transacciones-table tbody"); 
+        if (tb) {
+            tb.innerHTML = "";
+            (admin.historialBancario || []).forEach(m => {
+                let colorMonto = "var(--success)"; // Solo tiene ingresos por ahora
+                tb.innerHTML += `<tr><td>${m.fecha}</td><td><strong>${m.tipo}</strong></td><td><span style="color:${colorMonto}; font-weight:600;">$${m.monto.toFixed(2)}</span></td><td>${m.detalle}</td></tr>`;
+            });
+        }
+    }
+
+    function renderAdminCitas() {
+        const tb = document.querySelector("#admin-citas-table tbody"); 
+        if (!tb) return;
+        tb.innerHTML = "";
+        let count = 0;
+        app.usuarios.forEach(u => { 
+            if (u.rol === "Cliente") { 
+                (u.historialCitas || []).forEach(c => { 
+                    count++; 
+                    tb.innerHTML += `<tr><td>${c.fecha}</td><td><strong>${u.nombreCompleto}</strong></td><td><span style="color:var(--chrome)">${c.servicio}</span></td><td>${c.barbero}</td><td><span style="color:var(--gold); font-weight:600;">$${c.montoPagado.toFixed(2)}</span></td><td><span style="font-size:0.85rem; border:1px solid var(--border); padding:4px 8px; border-radius:6px; background:rgba(255,255,255,0.05);">${c.metodoPago}</span></td></tr>`; 
+                }); 
+            } 
+        });
+        if (count === 0) tb.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:3rem; color:var(--text-muted);">No hay servicios registrados en la base de datos.</td></tr>`;
+    }
+
+    const menuUsr = document.getElementById("menu-admin-usuarios");
+    const menuCitas = document.getElementById("menu-admin-citas");
+    const menuTrx = document.getElementById("menu-admin-transacciones");
+    const secCrud = document.getElementById("admin-crud-section");
+    const secCitas = document.getElementById("admin-citas-section");
+    const secTrx = document.getElementById("admin-transacciones-section");
+    
+    function resetAdminTabs() {
+        if(secCrud) secCrud.style.display = "none";
+        if(secCitas) secCitas.style.display = "none";
+        if(secTrx) secTrx.style.display = "none";
+        if(menuUsr) menuUsr.parentElement.classList.remove("active");
+        if(menuCitas) menuCitas.parentElement.classList.remove("active");
+        if(menuTrx) menuTrx.parentElement.classList.remove("active");
+    }
+
+    if (menuUsr) {
+        menuUsr.addEventListener("click", (e) => {
+            e.preventDefault();
+            resetAdminTabs();
+            secCrud.style.display = "block";
+            menuUsr.parentElement.classList.add("active");
+        });
+    }
+    if (menuCitas) {
+        menuCitas.addEventListener("click", (e) => {
+            e.preventDefault();
+            resetAdminTabs();
+            secCitas.style.display = "block";
+            menuCitas.parentElement.classList.add("active");
+            renderAdminCitas();
+        });
+    }
+    if (menuTrx) {
+        menuTrx.addEventListener("click", (e) => {
+            e.preventDefault();
+            resetAdminTabs();
+            secTrx.style.display = "block";
+            menuTrx.parentElement.classList.add("active");
+            renderAdminTransacciones();
         });
     }
 
