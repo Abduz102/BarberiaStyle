@@ -12,11 +12,19 @@ export class Administrador extends Usuario {
         const fecha = new Date().toLocaleString();
         this.historialBancario.push({ fecha, tipo, monto, detalle });
     }
-    agregarFondo(m) { 
+    agregarFondo(m, detalle = "Fondos transferidos desde un retiro de cliente") { 
         if (m > 0) {
             this.#saldo += m;
-            this.registrarMovimiento("Ingreso", m, "Fondos transferidos desde un retiro de cliente");
+            this.registrarMovimiento("Ingreso", m, detalle);
         }
+    }
+    retirarFondo(m, detalle) {
+        if (m > 0 && this.#saldo >= m) {
+            this.#saldo -= m;
+            this.registrarMovimiento("Egreso", m, detalle);
+            return true;
+        }
+        return false;
     }
     _restaurarBilletera(s) { if(s) this.#saldo = s; }
 }

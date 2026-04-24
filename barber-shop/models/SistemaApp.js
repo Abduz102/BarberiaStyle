@@ -11,8 +11,21 @@ export class SistemaApp {
             this.usuarios = JSON.parse(data).map(o => {
                 let inst;
                 if (o.rol === "Admin") { inst = new Administrador(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena); inst._restaurarBilletera(o.saldo); inst.historialBancario = o.historialBancario || []; }
-                else if (o.rol === "Barbero") inst = new Barbero(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena, o.especialidad);
-                else { inst = new Cliente(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena); inst._restaurarBilletera(o.saldo, o.puntos); inst.historialCitas = o.historialCitas || []; inst.historialBancario = o.historialBancario || []; inst.esRecurrente = o.esRecurrente || false; }
+                else if (o.rol === "Barbero") { inst = new Barbero(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena, o.especialidad); inst._restaurarBilletera(o.saldo); inst.historialBancario = o.historialBancario || []; }
+                else { 
+                    inst = new Cliente(o.cedula, o.nombreCompleto, o.celular, o.usuario, o.contrasena); 
+                    inst._restaurarBilletera(o.saldo, o.puntos); 
+                    
+                    // Parche para citas antiguas sin ID ni estado
+                    inst.historialCitas = (o.historialCitas || []).map(cita => {
+                        if (!cita.id) cita.id = 'cita-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+                        if (!cita.estado) cita.estado = "Pendiente";
+                        return cita;
+                    });
+                    
+                    inst.historialBancario = o.historialBancario || []; 
+                    inst.esRecurrente = o.esRecurrente || false; 
+                }
                 inst.bloqueado = o.bloqueado || false; inst._setIntentosFallidos(o.intentosFallidos || 0); return inst;
             });
         } else this.initDatosFalsos();
@@ -56,6 +69,16 @@ export class SistemaApp {
         } else {
             usr.cedula = c; usr.nombreCompleto = n; usr.celular = t; usr.usuario = u; if (p) usr.cambiarContrasena(p);
         }
+        this.guardar(); return { success: true };
+    }
+    editarMiPerfil(c, n, t, u, p) {
+        if (!this.currentUser) return { success: false, msg: "No hay sesión activa" };
+        if (u !== this.currentUser.usuario && this.usuarios.find(x => x.usuario === u)) return { success: false, msg: "El nombre de usuario ya está en uso." };
+        this.currentUser.cedula = c;
+        this.currentUser.nombreCompleto = n;
+        this.currentUser.celular = t;
+        this.currentUser.usuario = u;
+        if (p) this.currentUser.cambiarContrasena(p);
         this.guardar(); return { success: true };
     }
     crudEliminar(orig) {

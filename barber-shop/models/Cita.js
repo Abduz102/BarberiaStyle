@@ -1,1 +1,1 @@
-export class Cita { constructor(s, m, met, b) { this.fecha = new Date().toLocaleString(); this.servicio = s.nombre; this.barbero = b; this.montoPagado = m; this.metodoPago = met; } }
+export class Cita { constructor(s, m, met, b, f = null) { this.id = Math.random().toString(36).substr(2, 9); this.fecha = f || new Date().toLocaleString(); this.servicio = s.nombre; this.barbero = b; this.montoPagado = m; this.metodoPago = met; this.estado = "Pendiente"; } }

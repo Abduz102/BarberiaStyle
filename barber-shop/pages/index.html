@@ -93,6 +93,7 @@
             </div>
         </div>
 
+        <!-- Modal Mi Perfil se movió al final del body -->
         <!-- titulo y boton de agendar cita -->
         <section id="inicio" class="hero">
             <div class="contenido-hero reveal">
@@ -346,12 +347,33 @@
             </div>
             <div class="user-menu">
                 <span id="welcome-msg"></span>
+                <button class="btn-secondary btn-mi-perfil"><i class="fa-solid fa-user-edit"></i> Mi Perfil</button>
                 <button id="btn-logout" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i> Cerrar
                     Sesión</button>
             </div>
         </nav>
 
         <main class="dash-grid">
+            <section class="card mi-perfil-section" style="display:none; grid-column: 1 / -1; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:20px;">
+                    <h3><i class="fa-solid fa-user-edit"></i> Editar Mi Perfil</h3>
+                    <button class="btn-cerrar-perfil-inline" style="background:none; border:none; color:var(--silver-dim); font-size:1.5rem; cursor:pointer;">&times;</button>
+                </div>
+                <form class="form-mi-perfil-inline" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                    <div class="grupo-input"><label>Cédula:</label><input type="text" class="perfil-cedula crud-input" required></div>
+                    <div class="grupo-input"><label>Nombre Completo:</label><input type="text" class="perfil-nombre crud-input" required></div>
+                    <div class="grupo-input"><label>Celular:</label><input type="text" class="perfil-celular crud-input" required></div>
+                    <div class="grupo-input"><label>Usuario (Nickname):</label><input type="text" class="perfil-usuario crud-input" required></div>
+                    <div class="grupo-input" style="grid-column: 1 / -1;">
+                        <label>Nueva Contraseña <span style="font-size:0.8rem; color:var(--text-muted);">(Déjalo en blanco para no cambiarla)</span></label>
+                        <input type="password" class="perfil-contrasena crud-input" placeholder="Escribe la nueva contraseña">
+                    </div>
+                    <div class="botones-login" style="grid-column: 1 / -1; margin-top:10px;">
+                        <button type="submit" class="btn-ingresar"><i class="fa-solid fa-save"></i> Guardar Cambios</button>
+                    </div>
+                </form>
+            </section>
+
             <section class="card">
                 <h3><i class="fa-solid fa-wallet"></i> Capital OOP Disponible</h3>
                 <div class="wallet-stats">
@@ -374,6 +396,27 @@
                         Transferir</button>
                     <button class="btn-secondary" id="btn-simular-mes"><i class="fa-solid fa-calendar-plus"></i> Simular
                         Mes</button>
+                    <button class="btn-secondary" id="btn-show-simulador"><i class="fa-solid fa-calculator"></i>
+                        Simulador Cuotas</button>
+                </div>
+
+                <div id="simulador-section" class="grupo-input"
+                    style="display:none; margin-top:20px; flex-direction:column;">
+                    <label>Valor del Corte / Capital ($)</label>
+                    <input type="number" id="simulador-capital" step="0.01" min="1" class="crud-input"
+                        placeholder="ej. 30000">
+                    <label style="margin-top:10px;">Número de Cuotas</label>
+                    <input type="number" id="simulador-cuotas" min="1" max="36" class="crud-input" placeholder="ej. 6">
+                    <button id="btn-calcular-simulacion" class="btn-ingresar" style="margin-top:10px;">Calcular
+                        Cuota</button>
+
+                    <div id="resultado-simulacion"
+                        style="margin-top:15px; padding:15px; background:rgba(255,255,255,0.05); border-radius:8px; border:1px solid var(--border); display:none;">
+                        <p><strong>Tasa de interés:</strong> <span id="res-tasa"></span></p>
+                        <p><strong>Cuota mensual:</strong> <span id="res-cuota"
+                                style="color:var(--gold); font-size:1.2rem; font-weight:bold;"></span></p>
+                        <p><strong>Total a pagar:</strong> <span id="res-total"></span></p>
+                    </div>
                 </div>
 
                 <div id="recharge-section" class="grupo-input" style="display:none; margin-top:20px;">
@@ -392,17 +435,17 @@
                 <div id="transfer-section" class="grupo-input" style="display:none; margin-top:20px;">
                     <label>Usuario Destino (Nickname)</label>
                     <input type="text" id="destino-transfer" placeholder="ej. luis" class="crud-input">
-                    <label style="margin-top:10px;">Puntos a Transferir</label>
+                    <label style="margin-top: 10px;">Puntos a Transferir</label>
                     <input type="number" id="monto-transfer" step="0.01" min="1" class="crud-input">
-                    <button id="btn-transferir" class="btn-ingresar" style="margin-top:10px;">Enviar Puntos</button>
+                    <button id="btn-transferir" class="btn-ingresar" style="margin-top: 10px;">Enviar Puntos</button>
                 </div>
             </section>
 
             <section class="card">
-                <h3><i class="fa-solid fa-calendar-check"></i> Agendar Instrucción de Cita</h3>
+                <h3><i class="fa-solid fa-calendar-check"></i> Agendar Cita</h3>
                 <form id="agendar-form">
-                    <div class="grupo-input" style="margin-bottom:15px;">
-                        <label>Tipo de Servicio Polimórfico</label>
+                    <div class="grupo-input" style="margin-bottom: 15px;">
+                        <label>Tipo de Servicio</label>
                         <select id="select-servicio" required class="crud-input">
                             <option value="estandar">Corte Estándar ($30.000 COP - Aplica Crédito)</option>
                             <option value="ahorro">Corte Plan Ahorro ($25.000 COP - Aplica +1.5% Rendimiento)</option>
@@ -410,7 +453,7 @@
                         </select>
                     </div>
 
-                    <div id="vip-options" class="grupo-input" style="display:none; margin-bottom:15px;">
+                    <div id="vip-options" class="grupo-input" style="display: none; margin-bottom:15px;">
                         <label>Financiamiento (Cuotas)</label>
                         <select id="select-cuotas" class="crud-input">
                             <option value="1">1 Cuota (0% Interés)</option>
@@ -418,6 +461,17 @@
                             <option value="6">6 Cuotas (1.9% Interés p/c)</option>
                             <option value="12">12 Cuotas (2.3% Interés p/c)</option>
                         </select>
+                    </div>
+
+                    <div class="grupo-input-2columnas" style="margin-bottom:15px;">
+                        <div class="grupo-input">
+                            <label>Fecha de la Reserva</label>
+                            <input type="date" id="select-fecha" required class="crud-input">
+                        </div>
+                        <div class="grupo-input">
+                            <label>Hora de la Reserva</label>
+                            <input type="time" id="select-hora" required class="crud-input">
+                        </div>
                     </div>
 
                     <div class="grupo-input" style="margin-bottom:15px;">
@@ -443,6 +497,7 @@
                                 <th>Barbero Asignado</th>
                                 <th>Cargo en BD</th>
                                 <th>Fuente del Fondo</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -489,7 +544,8 @@
                 <li><a id="menu-admin-transacciones" href="#"><i class="fa-solid fa-terminal"></i>Transacciones</a></li>
             </ul>
 
-            <div class="admin-bottom">
+            <div class="admin-bottom" style="display:flex; flex-direction:column; gap:10px;">
+                <button class="btn-admin-outline btn-mi-perfil" style="width:100%;"><i class="fa-solid fa-user-edit"></i> Mi Perfil</button>
                 <button id="btn-logout-admin" class="btn-admin-danger"><i class="fa-solid fa-power-off"></i> Cerrar
                     Sesión</button>
             </div>
@@ -502,6 +558,26 @@
                     <span class="status-dot"></span> Online - Port 3000
                 </div>
             </header>
+
+            <section class="card mi-perfil-section" style="display:none; background:var(--bg-card); padding:25px; border-radius:6px; border:1px solid var(--border); margin-bottom:25px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:20px;">
+                    <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-user-edit"></i> Editar Mi Perfil</h3>
+                    <button class="btn-cerrar-perfil-inline" style="background:none; border:none; color:var(--silver-dim); font-size:1.5rem; cursor:pointer;">&times;</button>
+                </div>
+                <form class="form-mi-perfil-inline" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                    <div class="admin-input-group"><label>Cédula:</label><input type="text" class="perfil-cedula admin-input" required></div>
+                    <div class="admin-input-group"><label>Nombre Completo:</label><input type="text" class="perfil-nombre admin-input" required></div>
+                    <div class="admin-input-group"><label>Celular:</label><input type="text" class="perfil-celular admin-input" required></div>
+                    <div class="admin-input-group"><label>Usuario (Nickname):</label><input type="text" class="perfil-usuario admin-input" required></div>
+                    <div class="admin-input-group" style="grid-column: 1 / -1;">
+                        <label>Nueva Contraseña <span style="font-size:0.8rem; color:var(--text-muted);">(Déjalo en blanco para no cambiarla)</span></label>
+                        <input type="password" class="perfil-contrasena admin-input" placeholder="Escribe la nueva contraseña">
+                    </div>
+                    <div style="grid-column: 1 / -1; margin-top:10px;">
+                        <button type="submit" class="btn-admin-primary"><i class="fa-solid fa-save"></i> Guardar Cambios</button>
+                    </div>
+                </form>
+            </section>
 
             <section id="admin-crud-section" class="admin-panel">
                 <div class="flex-between"
@@ -601,10 +677,27 @@
                 <div class="flex-between"
                     style="display:flex; justify-content:space-between; margin-bottom:25px; align-items:center;">
                     <h3 style="color:var(--text-main); font-size:1.3rem;"><i class="fa-solid fa-building-columns"></i>
-                        Bóveda Principal</h3>
+                        Cuenta Corriente</h3>
                     <div
                         style="background:var(--bg-card); border:1px solid var(--border); padding:10px 20px; border-radius:6px; color:var(--neon); font-size:1.5rem; font-weight:700;">
                         Saldo Total: <span id="admin-disp-saldo">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="pago-barberos-form" style="background:rgba(255,255,255,0.02); padding:20px; border-radius:8px; border:1px solid var(--border); margin-bottom:20px;">
+                    <h4 style="margin-bottom:15px; color:var(--text-main); font-size:1.1rem;"><i class="fa-solid fa-money-bill-transfer"></i> Pago de Nómina a Barberos</h4>
+                    <div style="display:flex; gap:15px; align-items:flex-end; flex-wrap:wrap;">
+                        <div class="admin-input-group" style="flex:1; min-width:200px;">
+                            <label>Seleccionar Barbero</label>
+                            <select id="admin-select-barbero" class="admin-input">
+                                <option value="">Cargando barberos...</option>
+                            </select>
+                        </div>
+                        <div class="admin-input-group" style="flex:1; min-width:200px;">
+                            <label>Monto a Pagar ($)</label>
+                            <input type="number" id="admin-monto-pago" step="0.01" min="1" class="admin-input" placeholder="Ej. 15000">
+                        </div>
+                        <button id="btn-pagar-barbero" class="btn-admin-primary" style="height:42px; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-paper-plane"></i> Efectuar Pago</button>
                     </div>
                 </div>
 
@@ -634,11 +727,32 @@
             </div>
             <div class="user-menu">
                 <span id="welcome-msg-barbero" style="color:var(--text-main);">Staff</span>
+                <button class="btn-secondary btn-mi-perfil"><i class="fa-solid fa-user-edit"></i> Mi Perfil</button>
                 <button id="btn-logout-barber" class="btn-secondary"><i class="fa-solid fa-right-from-bracket"></i>
                     Cerrar Sesión</button>
             </div>
         </nav>
         <main class="dash-grid">
+            <section class="card mi-perfil-section" style="display:none; grid-column: 1 / -1; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:20px;">
+                    <h3><i class="fa-solid fa-user-edit"></i> Editar Mi Perfil</h3>
+                    <button class="btn-cerrar-perfil-inline" style="background:none; border:none; color:var(--silver-dim); font-size:1.5rem; cursor:pointer;">&times;</button>
+                </div>
+                <form class="form-mi-perfil-inline" style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                    <div class="grupo-input"><label>Cédula:</label><input type="text" class="perfil-cedula crud-input" required></div>
+                    <div class="grupo-input"><label>Nombre Completo:</label><input type="text" class="perfil-nombre crud-input" required></div>
+                    <div class="grupo-input"><label>Celular:</label><input type="text" class="perfil-celular crud-input" required></div>
+                    <div class="grupo-input"><label>Usuario (Nickname):</label><input type="text" class="perfil-usuario crud-input" required></div>
+                    <div class="grupo-input" style="grid-column: 1 / -1;">
+                        <label>Nueva Contraseña <span style="font-size:0.8rem; color:var(--text-muted);">(Déjalo en blanco para no cambiarla)</span></label>
+                        <input type="password" class="perfil-contrasena crud-input" placeholder="Escribe la nueva contraseña">
+                    </div>
+                    <div class="botones-login" style="grid-column: 1 / -1; margin-top:10px;">
+                        <button type="submit" class="btn-ingresar"><i class="fa-solid fa-save"></i> Guardar Cambios</button>
+                    </div>
+                </form>
+            </section>
+
             <section class="card" style="grid-column: 1 / -1;">
                 <h3><i class="fa-solid fa-clipboard-list"></i> Cronograma de Citas Asignadas</h3>
                 <div class="table-responsive">
@@ -649,6 +763,29 @@
                                 <th>Cliente</th>
                                 <th>Servicio Requerido</th>
                                 <th>Cobro</th>
+                                <th>Estado / Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <section class="card" style="grid-column: 1 / -1;">
+                <div class="flex-between" style="display:flex; justify-content:space-between; margin-bottom:20px; align-items:center;">
+                    <h3><i class="fa-solid fa-wallet"></i> Mi Nómina (Historial de Pagos)</h3>
+                    <div style="background:rgba(255,255,255,0.05); border:1px solid var(--border); padding:8px 15px; border-radius:6px; color:var(--gold); font-size:1.2rem; font-weight:700;">
+                        Saldo Total: <span id="barber-disp-saldo">$0.00</span>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="nomina-barbero-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha Transacción</th>
+                                <th>Tipo</th>
+                                <th>Monto</th>
+                                <th>Detalle</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -661,7 +798,9 @@
     <!-- Contenedor único para TOASTs (No tocar) -->
     <div id="app-toast"></div>
 
-    <script type="module" src="app.js?v=2024.4"></script>
+
+
+    <script type="module" src="app.js?v=2024.6"></script>
 </body>
 
 </html>
